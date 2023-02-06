@@ -16,7 +16,7 @@
 
 > ✓ _Angular 15, Ivy and SSR compatible_
 
-Here's the [demo](http://celtian.github.io/ngx-app-version/) or [stackblitz live preview](https://stackblitz.com/edit/ngx-app-version) or [codesandbox live preview](https://codesandbox.io/s/ngx-app-version-j2ryu)
+Here's the [demo](http://celtian.github.io/ngx-app-version/) or [stackblitz live preview](https://stackblitz.com/edit/ngx-app-version) or [codesandbox live preview](https://codesandbox.io/s/ngx-app-version-l05882)
 
 - Lightweight
 - No dependencies!
