@@ -65,228 +65,32 @@
   </div>
 
   <!-- Introduction -->
-  <h2>Let's Truncate the Text!</h2>
-  <p>Simple directive which supports responsive truncate</p>
+  <h2>Let's write version into DOM!</h2>
+  <p>Angular directive for writing version into DOM</p>
 
-  <input type="hidden" #selection>
 
   <div class="card-container">
-    <div class="card card-small" (click)="selection.value = 'simple'" tabindex="0">
-      <span>Simple</span>
+    <div class="card card-small" (click)="setState('DIRECTIVE')" tabindex="0">
+      <span>Directive</span>
     </div>
-    <div class="card card-small" (click)="selection.value = 'multiple'" tabindex="1">
-      <span>Multiline</span>
-    </div>
-    <div class="card card-small" (click)="selection.value = 'disabled'" tabindex="2">
-      <span>Disabled</span>
-    </div>
-    <div class="card card-small" (click)="selection.value = 'change'" tabindex="3">
-      <span>Change</span>
-    </div>
-    <div class="card card-small" (click)="selection.value = 'responsive'" tabindex="4">
-      <span>Responsive</span>
+    <div class="card card-small" (click)="setState('HOST_DIRECTIVE')" tabindex="1">
+      <span>Host Directive</span>
     </div>
   </div>
 
-  <!-- Examples -->
-  <ng-container [ngSwitch]="selection.value">
-    <ng-container *ngSwitchDefault>
 
-      <h3>1. {{ section.simple[0].title }}</h3>
-      <div class="terminal">
-        <div>
-          <code>
-            {{ section.simple[0].code }}
-          </code>
-        </div>
-      </div>
-      <div class="example example-content">
-        <p ngxAppVersion>{{ text }}</p>
-      </div>
-      <div class="example">
-        <small>{{ section.simple[0].description }}</small>
-      </div>
+  <div class="terminal">
+    <div>
+      <code>
+        {{ code }}
+      </code>
+    </div>
+  </div>
 
-      <h3>2. {{ section.simple[1].title }}</h3>
-      <div class="terminal">
-        <div>
-          <code>
-            {{ section.simple[1].code }}
-          </code>
-        </div>
-      </div>
-      <div class="example example-content">
-        <p ngxAppVersion [innerHTML]="text"></p>
-      </div>
-      <div class="example">
-        <small>{{ section.simple[1].description }}</small>
-      </div>
-
-    </ng-container>
-    <ng-container *ngSwitchCase="'multiple'">
-
-      <h3>1. {{ section.multiline[0].title }}</h3>
-      <div class="terminal">
-        <div>
-          <code>
-            {{ section.multiline[0].code }}
-          </code>
-        </div>
-      </div>
-      <div class="example example-content">
-        <p ngxAppVersion [size]="2">{{ text }}</p>
-      </div>
-      <div class="example">
-        <small>{{ section.multiline[0].description }}</small>
-      </div>
-
-      <h3>2. {{ section.multiline[1].title }}</h3>
-      <div class="terminal">
-        <div>
-          <code>
-            {{ section.multiline[1].code }}
-          </code>
-        </div>
-      </div>
-      <div class="example example-content">
-        <p ngxAppVersion [size]="4">{{ text }}</p>
-      </div>
-      <div class="example">
-        <small>{{ section.multiline[1].description }}</small>
-      </div>
-
-    </ng-container>
-    <ng-container *ngSwitchCase="'disabled'">
-
-      <h3>1. {{ section.disabled[0].title }}</h3>
-      <div class="terminal">
-        <div>
-          <code>
-            {{ section.disabled[0].code }}
-          </code>
-        </div>
-      </div>
-      <div class="example example-content">
-        <p ngxAppVersion [size]="4" [truncateDisabled]="true">{{ text }}</p>
-      </div>
-      <div class="example">
-        <small>{{ section.disabled[0].description }}</small>
-      </div>
-
-    </ng-container>
-    <ng-container *ngSwitchCase="'change'">
-
-      <h3>1. {{ section.change[0].title }}</h3>
-      <div class="terminal">
-        <div>
-          <code>
-            {{ section.change[0].code.split('\n')[0] }}
-          </code>
-          <hr>
-          <code>
-            {{ section.change[0].code.split('\n')[1] }}
-          </code>
-        </div>
-      </div>
-      <div class="example example-content">
-        <p ngxAppVersion [size]="2" (truncateChange)="truncateEvent = $event">{{ text }}</p>
-        <pre>{{ truncateEvent | json }}</pre>
-      </div>
-      <div class="example">
-        <small>{{ section.change[0].description }}</small>
-      </div>
-
-    </ng-container>
-    <ng-container *ngSwitchCase="'responsive'">
-
-      <h3>1. {{ section.responsive[0].title }}</h3>
-      <div class="terminal">
-        <div>
-          <code>
-            {{ section.responsive[0].code }}
-          </code>
-        </div>
-      </div>
-      <div class="example example-content">
-        <p ngxAppVersion size="xs">{{ text }}</p>
-        <br>
-        <p [innerHTML]="windowSize"></p>
-      </div>
-      <div class="example">
-        <small>{{ section.responsive[0].description }}</small>
-      </div>
-
-      <h3>2. {{ section.responsive[1].title }}</h3>
-      <div class="terminal">
-        <div>
-          <code>
-            {{ section.responsive[1].code }}
-          </code>
-        </div>
-      </div>
-      <div class="example example-content">
-        <p ngxAppVersion size="sm">{{ text }}</p>
-        <br>
-        <p [innerHTML]="windowSize"></p>
-      </div>
-      <div class="example">
-        <small>{{ section.responsive[1].description }}</small>
-      </div>
-
-      <h3>3. {{ section.responsive[2].title }}</h3>
-      <div class="terminal">
-        <div>
-          <code>
-            {{ section.responsive[2].code }}
-          </code>
-        </div>
-      </div>
-      <div class="example example-content">
-        <p ngxAppVersion size="md">{{ text }}</p>
-        <br>
-        <p [innerHTML]="windowSize"></p>
-      </div>
-      <div class="example">
-        <small>{{ section.responsive[2].description }}</small>
-      </div>
-
-      <h3>4. {{ section.responsive[3].title }}</h3>
-      <div class="terminal">
-        <div>
-          <code>
-            {{ section.responsive[3].code }}
-          </code>
-        </div>
-      </div>
-      <div class="example example-content">
-        <p ngxAppVersion size="lg">{{ text }}</p>
-        <br>
-        <p [innerHTML]="windowSize"></p>
-      </div>
-      <div class="example">
-        <small>{{ section.responsive[3].description }}</small>
-      </div>
-
-      <h3>5. {{ section.responsive[4].title }}</h3>
-      <div class="terminal">
-        <div>
-          <code>
-            {{ section.responsive[4].code }}
-          </code>
-        </div>
-      </div>
-      <div class="example example-content">
-        <p ngxAppVersion size="xl">{{ text }}</p>
-        <br>
-        <p [innerHTML]="windowSize"></p>
-      </div>
-      <div class="example">
-        <small>{{ section.responsive[4].description }}</small>
-      </div>
-
-    </ng-container>
-
-  </ng-container>
+  <div [ngSwitch]="state" class="card-container">
+    <div *ngSwitchCase="'DIRECTIVE'" ngxAppVersion>Version will be on this div</div>
+    <div *ngSwitchCase="'HOST_DIRECTIVE'">Version will be on <strong>app-root</strong> div</div>
+  </div>
 
   <!-- Footer -->
   <footer>
