@@ -21,7 +21,7 @@ Here's the [demo](http://celtian.github.io/ngx-app-version/) or [stackblitz live
 - Lightweight
 - No dependencies!
 - Directive way
-- Highly customizable [options](#options)...
+- Customizable [options](#options)...
 
 ## Install
 
@@ -41,59 +41,51 @@ yarn add ngx-app-version
    imports: [
      // ...
      NgxAppVersionModule.forRoot({
-
+       version: '1.1.1'
      })
    ]
   })
-
-  // or
-
-  @NgModule({
-   // ...
-   imports: [
-     // ...
-     NgxAppVersionModule
-   ]
-  })
 ```
 
-## Compatibility
-
-| Angular | ngx-app-version | Install                    |
-| ------- | --------------- | -------------------------- |
-| >= 12   | 0.x             | `yarn add ngx-app-version` |
+_Note: Do you want to get version from package.json? Consider to use [ngx-devkit-builders](https://www.npmjs.com/package/ngx-devkit-builders)._
 
 ## Quick start
 
-### Example code
+### Directive example
 
 ```html
-<div ngxAppVersion>some long text</div>
+<div ngxAppVersion>...</div>
 ```
 
-### Result
+```html
+<div app-version="1.1.1">...</div>
+```
+
+### Host directive example
+
+```typescript
+import { NgxAppVersionDirective } from 'ngx-app-version';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss'],
+  hostDirectives: [NgxAppVersionDirective]
+})
+export class AppComponent {}
+```
 
 ```html
-<div app-version="0.0.0">some long text</div>
+<app-root app-version="1.1.1">...</app-root>
 ```
 
 ## Options
 
 ### Root options
 
-| Option              | Type             | Default                  | Description                                            |
-| ------------------- | ---------------- | ------------------------ | ------------------------------------------------------ |
-| **size**            | string or number | 1                        | Number of truncated lines                              |
-| **breakpoints**     | object           | DEFAULT_BREAKPOINTS      | Breakpoints used in responsive mode                    |
-| **responsiveSizes** | object           | DEFAULT_RESPONSIVE_SIZES | How many lines should be truncated for each breakpoint |
-
-### Directive
-
-| Option                 | Type         | Default                       | Description                                  |
-| ---------------------- | ------------ | ----------------------------- | -------------------------------------------- |
-| **[size]**             | object       | value taken from root options | Number of truncated lines or responsive mode |
-| **[truncateDisabled]** | boolean      | false                         | Whether truncation is active or not          |
-| **(truncateChange)**   | () => object | none                          | Event called when truncation is changed.     |
+| Option      | Type   | Default   | Description                   |
+| ----------- | ------ | --------- | ----------------------------- |
+| **version** | string | undefined | version that will be rendered |
 
 ## Dependencies
 
