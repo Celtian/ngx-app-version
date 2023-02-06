@@ -1,0 +1,38 @@
+{
+  "name": "ngx-app-version",
+  "version": "0.0.0",
+  "author": {
+    "name": "Dominik Hladík",
+    "email": "dominik.hladik@seznam.cz",
+    "url": "https://github.com/Celtian"
+  },
+  "private": false,
+  "license": "MIT",
+  "description": "Angular directives for cutting texts",
+  "dependencies": {
+    "tslib": "^2.4.1"
+  },
+  "peerDependencies": {
+    "@angular/common": ">=12",
+    "@angular/core": ">=12"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
+  "homepage": "https://github.com/Celtian/ngx-app-version",
+  "repository": {
+    "url": "git+https://github.com/Celtian/ngx-app-version.git",
+    "type": "git"
+  },
+  "bugs": {
+    "url": "https://github.com/Celtian/ngx-app-version/issues"
+  },
+  "keywords": [
+    "angular",
+    "app-version",
+    "ngx"
+  ],
+  "engines": {
+    "node": ">=12"
+  }
+}

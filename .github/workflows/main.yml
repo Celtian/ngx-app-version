@@ -1,0 +1,98 @@
+name: Build & Publish
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  install-and-build:
+    name: Install & Build
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [16]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup node version
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node }}
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Cache node modules
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.OS }}-yarn-${{ env.cache-name }}-
+            ${{ runner.OS }}-yarn-
+            ${{ runner.OS }}-
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: Sync versions # Sync versions
+        run: yarn syncprojects
+
+      - name: Build demo app # Build Schematics and move
+        run: yarn build:demo --base-href https://celtian.github.io/ngx-app-version/
+
+      - name: Build ngx-app-version # Build
+        run: yarn build
+
+      - name: Run tests
+        run: yarn test --code-coverage --configuration=ci
+
+      - name: Upload coverage reports
+        uses: codecov/codecov-action@v2
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
+          fail_ci_if_error: true
+          verbose: false
+          dry_run: false
+
+      - name: Publish NPM
+        if: startsWith(github.ref, 'refs/tags/v') && contains(github.ref, 'beta') == false
+        run: cd dist/ngx-app-version && npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+
+      - name: Publish NPM BETA
+        if: startsWith(github.ref, 'refs/tags/v') && contains(github.ref, 'beta') == true
+        run: cd dist/ngx-app-version && npm publish --tag beta
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+
+      # Publish to GitHub Package Registry
+      - name: Set up package for GPR
+        if: startsWith(github.ref, 'refs/tags/v') && contains(github.ref, 'beta') == false
+        run: yarn gpr:setup
+
+      - name: Use GPR
+        if: startsWith(github.ref, 'refs/tags/v') && contains(github.ref, 'beta') == false
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node }}
+          registry-url: https://npm.pkg.github.com/
+          scope: '@celtian'
+
+      - name: Publish to GitHub Package Registry
+        if: startsWith(github.ref, 'refs/tags/v') && contains(github.ref, 'beta') == false
+        run: |
+          cd dist/ngx-app-version
+          npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{github.token}}
+
+      - name: Deploy Github Pages
+        if: startsWith(github.ref, 'refs/tags/v') && contains(github.ref, 'beta') == false
+        uses: peaceiris/actions-gh-pages@v2.5.0
+        env:
+          ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+          PUBLISH_BRANCH: gh-pages
+          PUBLISH_DIR: ./dist/demo

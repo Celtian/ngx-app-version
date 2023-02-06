@@ -1,0 +1,57 @@
+name: Test feature branch
+
+on:
+  push:
+    branches:
+      - feat/*
+
+jobs:
+  install-and-test:
+    name: Install & Test
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [16]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup node version
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node }}
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Cache node modules
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.OS }}-yarn-${{ env.cache-name }}-
+            ${{ runner.OS }}-yarn-
+            ${{ runner.OS }}-
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: Sync versions # Sync versions
+        run: yarn syncprojects
+
+      - name: Build demo app # Build Schematics and move
+        run: yarn build:demo --base-href https://celtian.github.io/ngx-app-version/
+
+      - name: Build ngx-app-version # Build
+        run: yarn build
+
+      - name: Run tests
+        run: yarn test --configuration=ci
+
+      - name: Upload coverage reports
+        uses: codecov/codecov-action@v2
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
+          fail_ci_if_error: true
+          verbose: true
+          dry_run: true
