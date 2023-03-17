@@ -92,23 +92,14 @@
   },
   "keywords": [
     "angular",
-    "clamp",
-    "cut",
-    "ellipsis",
     "ngx-app-version",
-    "ngx",
-    "responsive",
-    "shorten",
-    "trim",
-    "truncate",
-    "truncated",
-    "truncation"
+    "ngx"
   ],
   "files": [
     "dist"
   ],
   "engines": {
-    "node": ">=16 <18"
+    "node": ">=18 <20"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
