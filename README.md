@@ -6,7 +6,7 @@
 [![npm version](https://badge.fury.io/js/ngx-app-version.svg)](https://badge.fury.io/js/ngx-app-version)
 [![Package License](https://img.shields.io/npm/l/ngx-app-version.svg)](https://www.npmjs.com/ngx-app-version)
 [![NPM Downloads](https://img.shields.io/npm/dm/ngx-app-version.svg)](https://www.npmjs.com/ngx-app-version)
-[![Build & Publish](https://github.com/celtian/ngx-app-version/workflows/Build%20&%20Publish/badge.svg)](https://github.com/celtian/ngx-app-version/actions)
+[![Snyk](https://snyk.io//advisor/npm-package/ngx-app-version/badge.svg)](https://snyk.io//advisor/npm-package/ngx-app-version)
 [![codecov](https://codecov.io/gh/Celtian/ngx-app-version/branch/master/graph/badge.svg?token=1IRUKIKM0D)](https://codecov.io/gh/celtian/ngx-app-version/)
 [![stars](https://badgen.net/github/stars/celtian/ngx-app-version)](https://github.com/celtian/ngx-app-version/)
 [![forks](https://badgen.net/github/forks/celtian/ngx-app-version)](https://github.com/celtian/ngx-app-version/)
@@ -14,7 +14,7 @@
 
 > Angular directive for writing version into DOM
 
-> ✓ _Angular 15, Ivy and SSR compatible_
+> ✓ _Angular 16, Ivy and SSR compatible_
 
 Here's the [demo](http://celtian.github.io/ngx-app-version/) or [stackblitz live preview](https://stackblitz.com/edit/ngx-app-version) or [codesandbox live preview](https://codesandbox.io/s/ngx-app-version-l05882)
 
