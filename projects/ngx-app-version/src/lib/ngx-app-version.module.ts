@@ -4,7 +4,9 @@ import { NgxAppVersionOptions } from './ngx-app-version-options.interface';
 import { NgxAppVersionOptionsService } from './ngx-app-version-options.service';
 import { NgxAppVersionDirective } from './ngx-app-version.directive';
 
-export let FOR_ROOT_OPTIONS_TOKEN = new InjectionToken<NgxAppVersionOptions>('forRoot() NgxAppVersionOptionsService configuration.');
+export let FOR_ROOT_OPTIONS_TOKEN = new InjectionToken<NgxAppVersionOptions>(
+  'forRoot() NgxAppVersionOptionsService configuration.'
+);
 
 @NgModule({
   imports: [NgxAppVersionDirective],

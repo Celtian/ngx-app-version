@@ -23,8 +23,7 @@ export class AppComponent implements OnInit {
   public setState(state: State): void {
     this.state = state;
     if (this.state === 'HOST_DIRECTIVE') {
-      this.code =
-        `@Component({
+      this.code = `@Component({
           ...
           hostDirectives: [NgxAppVersionDirective]
           ...

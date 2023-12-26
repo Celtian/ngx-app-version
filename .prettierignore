@@ -7,6 +7,5 @@ dist
 **/interfaces/*.ts
 **/*.spec.ts
 **/*.d.ts
-**/*.html
 **/functions/dist/*
 **/angular.json
