@@ -15,7 +15,7 @@
     "start": "ng build ngx-app-version --watch",
     "build:demo": "ng build demo --configuration production",
     "build": "ng build ngx-app-version --configuration production",
-    "deploy:ghpages": "yarn build && yarn build:demo && ngh --dir=dist/demo",
+    "deploy:ghpages": "yarn build && yarn build:demo && ngh --dir=dist/demo/browser",
     "publish:npmjs": "yarn syncprojects && yarn build && npm publish --folder dist/ngx-app-version",
     "gpr:setup": "yarn ts-node --project scripts/tsconfig.ts-node.json scripts/gpr-setup",
     "test": "ng test",
