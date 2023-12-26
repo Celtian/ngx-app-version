@@ -158,9 +158,15 @@
     </div>
   </div>
 
-  <div [ngSwitch]="state" class="card-container">
-    <div *ngSwitchCase="'DIRECTIVE'" ngxAppVersion>Version will be on this div</div>
-    <div *ngSwitchCase="'HOST_DIRECTIVE'">Version will be on <strong>app-root</strong> div</div>
+  <div class="card-container">
+    @switch (state) {
+      @case ('DIRECTIVE') {
+        <div ngxAppVersion>Version will be on this div</div>
+      }
+      @case ('HOST_DIRECTIVE') {
+        <div>Version will be on <strong>app-root</strong> div</div>
+      }
+    }
   </div>
 
   <!-- Footer -->

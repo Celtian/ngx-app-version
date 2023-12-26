@@ -8,10 +8,10 @@
   },
   "private": false,
   "license": "MIT",
-  "description": "Angular directives for cutting texts",
+  "description": "Angular directive for writing version into DOM",
   "peerDependencies": {
-    "@angular/common": ">=12",
-    "@angular/core": ">=12"
+    "@angular/common": ">=14",
+    "@angular/core": ">=14"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
@@ -30,6 +30,6 @@
     "ngx"
   ],
   "engines": {
-    "node": ">=12"
+    "node": ">=14"
   }
 }

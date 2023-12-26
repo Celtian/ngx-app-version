@@ -1,21 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { NgxAppVersionModule } from 'projects/ngx-app-version/src/public-api';
+import { NgxAppVersionOptions, provideAppVersion } from 'projects/ngx-app-version/src/public-api';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
   let fixture: ComponentFixture<AppComponent>;
   let component: AppComponent;
 
+  const mockOptions: NgxAppVersionOptions = {
+    version: '1.0.0'
+  };
+
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        AppComponent
-      ],
-      imports: [
-        NgxAppVersionModule.forRoot({
-          version: '0.0.0'
-        })
-      ]
+      imports: [AppComponent],
+      providers: [provideAppVersion(mockOptions)]
     }).compileComponents();
 
     fixture = TestBed.createComponent(AppComponent);

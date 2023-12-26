@@ -1,5 +1,5 @@
-import { Directive, ElementRef, Renderer2 } from '@angular/core';
-import { NgxAppVersionOptionsService } from './ngx-app-version-options.service';
+import { Directive, ElementRef, OnInit, Renderer2, inject } from '@angular/core';
+import { APP_VERSION_OPTIONS_TOKEN } from './ngx-app-version.provider';
 
 /**
  * @returns app version
@@ -8,12 +8,12 @@ import { NgxAppVersionOptionsService } from './ngx-app-version-options.service';
   selector: '[ngxAppVersion]',
   standalone: true
 })
-export class NgxAppVersionDirective {
-  constructor(
-    private element: ElementRef,
-    private renderer: Renderer2,
-    private options: NgxAppVersionOptionsService
-  ) {
+export class NgxAppVersionDirective implements OnInit {
+  private options = inject(APP_VERSION_OPTIONS_TOKEN);
+  private element = inject(ElementRef);
+  private renderer = inject(Renderer2);
+
+  public ngOnInit(): void {
     this.renderer.setAttribute(this.element.nativeElement, 'app-version', this.options.version);
   }
 }

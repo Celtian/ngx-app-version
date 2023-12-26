@@ -8,7 +8,9 @@ type State = 'DIRECTIVE' | 'HOST_DIRECTIVE';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
-  hostDirectives: [NgxAppVersionDirective]
+  imports: [NgxAppVersionDirective],
+  hostDirectives: [NgxAppVersionDirective],
+  standalone: true
 })
 export class AppComponent implements OnInit {
   public title = 'ngx-app-version';

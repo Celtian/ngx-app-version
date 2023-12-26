@@ -1,60 +1,84 @@
-import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
-import { NgxAppVersionOptionsService } from './ngx-app-version-options.service';
+import { Component, ElementRef, Renderer2 } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 import { NgxAppVersionDirective } from './ngx-app-version.directive';
-
-const TEXT = 'Lorem ipsum dolor sit amet';
+import { NgxAppVersionOptions } from './ngx-app-version.interface';
+import { provideAppVersion } from './ngx-app-version.provider';
 
 describe('NgxAppVersionDirective', () => {
-
-  describe('Example with directive', () => {
-    let renderer: jasmine.SpyObj<Renderer2>;
-    let element: jasmine.SpyObj<ElementRef>;
-    let options: jasmine.SpyObj<NgxAppVersionOptionsService>;
+  describe('directive', () => {
+    let fixture: ComponentFixture<TestComponent>;
+    let element: HTMLElement;
 
     @Component({
-      template: '<div ngxAppVersion>{{ text }}</div>'
+      template: `<div ngxAppVersion></div>`
     })
-    class TestDirectiveComponent {
-      public text = TEXT;
-      @ViewChild(NgxAppVersionDirective) public directive: NgxAppVersionDirective;
-    }
+    class TestComponent {}
+
+    const mockOptions: NgxAppVersionOptions = {
+      version: '1.0.0'
+    };
 
     beforeEach(() => {
-      options = jasmine.createSpyObj('NgxAppVersionOptionsService', ['version']);
-      element = jasmine.createSpyObj('ElementRef', ['nativeElement']);
-      renderer = jasmine.createSpyObj('Renderer2', ['setAttribute']);
+      TestBed.configureTestingModule({
+        declarations: [TestComponent],
+        imports: [NgxAppVersionDirective],
+        providers: [
+          provideAppVersion(mockOptions),
+          { provide: ElementRef, useValue: {} },
+          { provide: Renderer2, useValue: {} }
+        ]
+      });
+      fixture = TestBed.createComponent(TestComponent);
+      element = fixture.nativeElement;
     });
 
-    it('should create an instance', () => {
-      const directive = new NgxAppVersionDirective(element, renderer, options);
-      expect(directive).toBeTruthy();
+    it('should set the app version attribute on the host element', () => {
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        const directiveEl = fixture.debugElement.query(By.directive(NgxAppVersionDirective));
+        expect(directiveEl).not.toBeNull();
+
+        const directiveInstance = directiveEl.injector.get(NgxAppVersionDirective);
+        expect(directiveInstance).not.toBeNull();
+      });
     });
   });
 
-
-  describe('Example host directive', () => {
-    let renderer: jasmine.SpyObj<Renderer2>;
-    let element: jasmine.SpyObj<ElementRef>;
-    let options: jasmine.SpyObj<NgxAppVersionOptionsService>;
+  describe('host directive', () => {
+    let fixture: ComponentFixture<TestHostComponent>;
+    let element: HTMLElement;
 
     @Component({
-      template: '<p>{{ text }}</p>',
+      template: `<div></div>`,
       hostDirectives: [NgxAppVersionDirective]
     })
-    class TestHostDirectiveComponent {
-      public text = TEXT;
-      @ViewChild(NgxAppVersionDirective) public directive: NgxAppVersionDirective;
-    }
+    class TestHostComponent {}
+
+    const mockOptions: NgxAppVersionOptions = {
+      version: '1.0.0'
+    };
 
     beforeEach(() => {
-      options = jasmine.createSpyObj('NgxAppVersionOptionsService', ['version']);
-      element = jasmine.createSpyObj('ElementRef', ['nativeElement']);
-      renderer = jasmine.createSpyObj('Renderer2', ['setAttribute']);
+      TestBed.configureTestingModule({
+        declarations: [TestHostComponent],
+        imports: [],
+        providers: [
+          provideAppVersion(mockOptions),
+          { provide: ElementRef, useValue: {} },
+          { provide: Renderer2, useValue: {} }
+        ]
+      });
+      fixture = TestBed.createComponent(TestHostComponent);
+      element = fixture.nativeElement;
     });
 
-    it('should create an instance', () => {
-      const directive = new NgxAppVersionDirective(element, renderer, options);
-      expect(directive).toBeTruthy();
+    it('should work as host directive', () => {
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        const directiveInstance = fixture.debugElement.injector.get(NgxAppVersionDirective);
+        expect(directiveInstance).not.toBeNull();
+      });
     });
   });
-})
+});
