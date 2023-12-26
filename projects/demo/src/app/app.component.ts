@@ -7,7 +7,7 @@ type State = 'DIRECTIVE' | 'HOST_DIRECTIVE';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  styleUrl: './app.component.scss',
   hostDirectives: [NgxAppVersionDirective]
 })
 export class AppComponent implements OnInit {
