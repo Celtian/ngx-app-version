@@ -5,7 +5,6 @@ dist
 .angulardoc.json
 .vscode/*
 **/interfaces/*.ts
-**/*.spec.ts
 **/*.d.ts
 **/functions/dist/*
 **/angular.json

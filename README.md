@@ -14,7 +14,7 @@
 
 > Angular directive for writing version into DOM
 
-> ✓ _Angular 16, Ivy and SSR compatible_
+> ✓ _Angular 17, Ivy and SSR compatible_
 
 Here's the [demo](http://celtian.github.io/ngx-app-version/) or [stackblitz live preview](https://stackblitz.com/edit/ngx-app-version) or [codesandbox live preview](https://codesandbox.io/s/ngx-app-version-l05882)
 
@@ -31,16 +31,31 @@ Here's the [demo](http://celtian.github.io/ngx-app-version/) or [stackblitz live
 yarn add ngx-app-version
 ```
 
-2. Add NgxAppVersionModule into your module `imports`
+2. Add `provideAppVersion` into your config
+
+```typescript
+import { NgxAppVersionModule } from 'ngx-app-version';
+
+export const appConfig: ApplicationConfig = {
+  providers: [
+    // ...
+    provideAppVersion({
+      version: '1.0.0'
+    })
+  ]
+};
+```
+
+or module
 
 ```typescript
   import { NgxAppVersionModule } from 'ngx-app-version';
 
   @NgModule({
    // ...
-   imports: [
+   providers: [
      // ...
-     NgxAppVersionModule.forRoot({
+     provideAppVersion({
        version: '1.1.1'
      })
    ]
@@ -78,6 +93,13 @@ export class AppComponent {}
 ```html
 <app-root app-version="1.1.1">...</app-root>
 ```
+
+## Compatibility
+
+| Angular | ngx-app-version | Install                      |
+| ------- | --------------- | ---------------------------- |
+| >= 14   | 1.x             | `yarn add ngx-app-version`   |
+| >= 12   | 0.x             | `yarn add ngx-app-version@0` |
 
 ## Options
 
