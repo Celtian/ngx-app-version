@@ -34,7 +34,7 @@ yarn add ngx-app-version
 2. Add `provideAppVersion` into your config
 
 ```typescript
-import { NgxAppVersionModule } from 'ngx-app-version';
+import { provideAppVersion } from 'ngx-app-version';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -49,7 +49,7 @@ export const appConfig: ApplicationConfig = {
 or module
 
 ```typescript
-  import { NgxAppVersionModule } from 'ngx-app-version';
+  import { provideAppVersion } from 'ngx-app-version';
 
   @NgModule({
    // ...
@@ -115,7 +115,7 @@ _None_
 
 ## License
 
-Copyright &copy; 2023 [Dominik Hladik](https://github.com/Celtian)
+Copyright &copy; 2023 - 2024 [Dominik Hladik](https://github.com/Celtian)
 
 All contents are licensed under the [MIT license].
 
