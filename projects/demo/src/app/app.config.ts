@@ -1,10 +1,11 @@
-import { ApplicationConfig, importProvidersFrom } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { ApplicationConfig, provideExperimentalZonelessChangeDetection } from '@angular/core';
+import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideAppVersion } from 'projects/ngx-app-version/src/public-api';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    importProvidersFrom(BrowserModule),
+    provideAnimations(),
+    provideExperimentalZonelessChangeDetection(),
     provideAppVersion({
       version: '1.0.0'
     })
