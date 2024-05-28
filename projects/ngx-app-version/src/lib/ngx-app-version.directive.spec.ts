@@ -1,4 +1,4 @@
-import { Component, ElementRef, Renderer2, provideExperimentalZonelessChangeDetection } from '@angular/core';
+import { Component, ElementRef, Renderer2 } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { NgxAppVersionDirective } from './ngx-app-version.directive';
@@ -24,7 +24,6 @@ describe('NgxAppVersionDirective', () => {
         declarations: [TestComponent],
         imports: [NgxAppVersionDirective],
         providers: [
-          provideExperimentalZonelessChangeDetection(),
           provideAppVersion(mockOptions),
           { provide: ElementRef, useValue: {} },
           { provide: Renderer2, useValue: {} }
@@ -65,7 +64,6 @@ describe('NgxAppVersionDirective', () => {
         declarations: [TestHostComponent],
         imports: [],
         providers: [
-          provideExperimentalZonelessChangeDetection(),
           provideAppVersion(mockOptions),
           { provide: ElementRef, useValue: {} },
           { provide: Renderer2, useValue: {} }
