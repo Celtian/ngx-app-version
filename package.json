@@ -22,7 +22,7 @@
     "script:sync-projects": "yarn tsx ./scripts/sync-projects.ts",
     "script:gpr-setup": "yarn tsx ./scripts/gpr-setup.ts",
     "postinstall": "yarn script:create-version",
-    "prepare": "husky install",
+    "prepare": "husky",
     "version": "yarn script:sync-projects && git add projects/ngx-app-version/ && auto-changelog -p && git add CHANGELOG.md",
     "postversion": "git push && git push --follow-tags",
     "publish:beta": "yarn && yarn build && npm publish --folder dist --tag beta",
