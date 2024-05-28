@@ -23,7 +23,7 @@ Here's the [demo](http://celtian.github.io/ngx-app-version/) or [stackblitz live
 - Directive way
 - Customizable [options](#options)...
 
-## Install
+## 🛠️ Install
 
 1. Use yarn (or npm) to install the package
 
@@ -64,7 +64,7 @@ or module
 
 _Note: Do you want to get version from package.json? Consider to use [ngx-devkit-builders](https://www.npmjs.com/package/ngx-devkit-builders)._
 
-## Quick start
+## 🚀 Quick start
 
 ### Directive example
 
@@ -94,14 +94,14 @@ export class AppComponent {}
 <app-root app-version="1.1.1">...</app-root>
 ```
 
-## Compatibility
+## 🔧 Compatibility
 
 | Angular | ngx-app-version | Install                      |
 | ------- | --------------- | ---------------------------- |
 | >= 14   | 1.x             | `yarn add ngx-app-version`   |
 | >= 12   | 0.x             | `yarn add ngx-app-version@0` |
 
-## Options
+## ⚙️ Options
 
 ### Root options
 
