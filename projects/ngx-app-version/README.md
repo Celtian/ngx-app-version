@@ -109,11 +109,11 @@ export class AppComponent {}
 | ----------- | ------ | --------- | ----------------------------- |
 | **version** | string | undefined | version that will be rendered |
 
-## Dependencies
+## 📦 Dependencies
 
 _None_
 
-## License
+## 🪪 License
 
 Copyright &copy; 2023 - 2024 [Dominik Hladik](https://github.com/Celtian)
 
