@@ -8,10 +8,11 @@ import { provideAppVersion } from './ngx-app-version.provider';
 describe('NgxAppVersionDirective', () => {
   describe('directive', () => {
     let fixture: ComponentFixture<TestComponent>;
-    let element: HTMLElement;
 
     @Component({
-      template: `<div ngxAppVersion></div>`
+      template: `<div ngxAppVersion></div>`,
+      standalone: true,
+      imports: [NgxAppVersionDirective]
     })
     class TestComponent {}
 
@@ -21,8 +22,7 @@ describe('NgxAppVersionDirective', () => {
 
     beforeEach(() => {
       TestBed.configureTestingModule({
-        declarations: [TestComponent],
-        imports: [NgxAppVersionDirective],
+        imports: [TestComponent],
         providers: [
           provideAppVersion(mockOptions),
           { provide: ElementRef, useValue: {} },
@@ -30,7 +30,6 @@ describe('NgxAppVersionDirective', () => {
         ]
       });
       fixture = TestBed.createComponent(TestComponent);
-      element = fixture.nativeElement;
     });
 
     it('should set the app version attribute on the host element', () => {
@@ -47,11 +46,11 @@ describe('NgxAppVersionDirective', () => {
 
   describe('host directive', () => {
     let fixture: ComponentFixture<TestHostComponent>;
-    let element: HTMLElement;
 
     @Component({
       template: `<div></div>`,
-      hostDirectives: [NgxAppVersionDirective]
+      hostDirectives: [NgxAppVersionDirective],
+      standalone: false
     })
     class TestHostComponent {}
 
@@ -70,7 +69,6 @@ describe('NgxAppVersionDirective', () => {
         ]
       });
       fixture = TestBed.createComponent(TestHostComponent);
-      element = fixture.nativeElement;
     });
 
     it('should work as host directive', () => {
