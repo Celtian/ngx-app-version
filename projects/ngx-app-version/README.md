@@ -98,7 +98,8 @@ export class AppComponent {}
 
 | Angular | ngx-app-version | Install                      |
 | ------- | --------------- | ---------------------------- |
-| >= 14   | 1.x             | `yarn add ngx-app-version`   |
+| >= 19   | 2.x             | `yarn add ngx-app-version`   |
+| >= 14   | 1.x             | `yarn add ngx-app-version@1` |
 | >= 12   | 0.x             | `yarn add ngx-app-version@0` |
 
 ## ⚙️ Options
