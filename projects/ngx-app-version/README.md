@@ -84,7 +84,7 @@ import { NgxAppVersionDirective } from 'ngx-app-version';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
+  styleUrl: './app.component.css',
   hostDirectives: [NgxAppVersionDirective]
 })
 export class AppComponent {}
@@ -115,7 +115,7 @@ _None_
 
 ## 🪪 License
 
-Copyright &copy; 2023 - 2024 [Dominik Hladik](https://github.com/Celtian)
+Copyright &copy; 2023 - 2025 [Dominik Hladik](https://github.com/Celtian)
 
 All contents are licensed under the [MIT license].
 
