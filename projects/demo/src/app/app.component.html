@@ -153,13 +153,13 @@
   <div class="terminal">
     <div>
       <code>
-        {{ code }}
+        {{ code() }}
       </code>
     </div>
   </div>
 
   <div class="card-container">
-    @switch (state) {
+    @switch (state()) {
       @case ('DIRECTIVE') {
         <div ngxAppVersion>Version will be on this div</div>
       }

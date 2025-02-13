@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { NgxAppVersionDirective } from 'projects/ngx-app-version/src/public-api';
+import { Component, computed, signal } from '@angular/core';
+import { NgxAppVersionDirective } from '../../../ngx-app-version/src/public-api';
 import { VERSION } from '../environments/version';
 
 type State = 'DIRECTIVE' | 'HOST_DIRECTIVE';
@@ -7,34 +7,31 @@ type State = 'DIRECTIVE' | 'HOST_DIRECTIVE';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
+  styleUrl: './app.component.css',
   imports: [NgxAppVersionDirective],
-  hostDirectives: [NgxAppVersionDirective],
-  standalone: true
+  hostDirectives: [NgxAppVersionDirective]
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   public title = 'ngx-app-version';
   public version = VERSION;
-  public state: State;
-  public code: string;
-
-  public ngOnInit(): void {
-    this.setState('DIRECTIVE');
-  }
+  public state = signal<State>('DIRECTIVE');
+  public code = computed(() => {
+    const state = this.state();
+    if (state === 'DIRECTIVE') {
+      return '<div ngxAppVersion>Version will be on this div</div>';
+    } else {
+      return `@Component({
+        ...
+        hostDirectives: [NgxAppVersionDirective]
+        ...
+      })
+      export class AppComponent {
+        ...
+      }`;
+    }
+  });
 
   public setState(state: State): void {
-    this.state = state;
-    if (this.state === 'HOST_DIRECTIVE') {
-      this.code = `@Component({
-          ...
-          hostDirectives: [NgxAppVersionDirective]
-          ...
-        })
-        export class AppComponent {
-          ...
-        }`;
-    } else {
-      this.code = '<div ngxAppVersion>Version will be on this div</div>';
-    }
+    this.state.set(state);
   }
 }

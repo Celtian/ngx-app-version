@@ -11,7 +11,6 @@ describe('NgxAppVersionDirective', () => {
 
     @Component({
       template: `<div ngxAppVersion></div>`,
-      standalone: true,
       imports: [NgxAppVersionDirective]
     })
     class TestComponent {}
@@ -49,8 +48,7 @@ describe('NgxAppVersionDirective', () => {
 
     @Component({
       template: `<div></div>`,
-      hostDirectives: [NgxAppVersionDirective],
-      standalone: false
+      hostDirectives: [NgxAppVersionDirective]
     })
     class TestHostComponent {}
 
@@ -60,8 +58,7 @@ describe('NgxAppVersionDirective', () => {
 
     beforeEach(() => {
       TestBed.configureTestingModule({
-        declarations: [TestHostComponent],
-        imports: [],
+        imports: [TestHostComponent],
         providers: [
           provideAppVersion(mockOptions),
           { provide: ElementRef, useValue: {} },

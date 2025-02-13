@@ -10,8 +10,8 @@
   "license": "MIT",
   "description": "Angular directive for writing version into DOM",
   "peerDependencies": {
-    "@angular/common": ">=14",
-    "@angular/core": ">=14"
+    "@angular/common": ">=19",
+    "@angular/core": ">=19"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
@@ -30,6 +30,6 @@
     "ngx"
   ],
   "engines": {
-    "node": ">=14"
+    "node": ">=18"
   }
 }
