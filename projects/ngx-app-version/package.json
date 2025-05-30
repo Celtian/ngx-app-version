@@ -10,7 +10,6 @@
   "license": "MIT",
   "description": "Angular directive for writing version into DOM",
   "peerDependencies": {
-    "@angular/common": ">=19",
     "@angular/core": ">=19"
   },
   "publishConfig": {
