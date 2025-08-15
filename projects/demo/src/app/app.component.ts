@@ -6,9 +6,9 @@ type State = 'DIRECTIVE' | 'HOST_DIRECTIVE';
 
 @Component({
   selector: 'app-root',
+  imports: [NgxAppVersionDirective],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
-  imports: [NgxAppVersionDirective],
   hostDirectives: [NgxAppVersionDirective]
 })
 export class AppComponent {

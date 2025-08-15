@@ -10,8 +10,8 @@ describe('NgxAppVersionDirective', () => {
     let fixture: ComponentFixture<TestComponent>;
 
     @Component({
-      template: `<div ngxAppVersion></div>`,
-      imports: [NgxAppVersionDirective]
+      imports: [NgxAppVersionDirective],
+      template: `<div ngxAppVersion></div>`
     })
     class TestComponent {}
 
