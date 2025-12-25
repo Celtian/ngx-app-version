@@ -1,5 +1,5 @@
 import { Component, computed, signal } from '@angular/core';
-import { NgxAppVersionDirective } from '../../../ngx-app-version/src/public-api';
+import { NgxAppVersionDirective } from 'ngx-app-version';
 import { VERSION } from '../environments/version';
 
 type State = 'DIRECTIVE' | 'HOST_DIRECTIVE';
@@ -7,11 +7,11 @@ type State = 'DIRECTIVE' | 'HOST_DIRECTIVE';
 @Component({
   selector: 'app-root',
   imports: [NgxAppVersionDirective],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
+  templateUrl: './app.html',
+  styleUrl: './app.css',
   hostDirectives: [NgxAppVersionDirective]
 })
-export class AppComponent {
+export class App {
   public title = 'ngx-app-version';
   public version = VERSION;
   public state = signal<State>('DIRECTIVE');
