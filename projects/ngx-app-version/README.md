@@ -14,7 +14,7 @@
 
 > Angular directive for writing version into DOM
 
-> ✓ _Angular 20 compatible_
+> ✓ _Angular 21 compatible_
 
 Here's the [demo](http://celtian.github.io/ngx-app-version/) or [stackblitz live preview](https://stackblitz.com/edit/ngx-app-version) or [codesandbox live preview](https://codesandbox.io/s/ngx-app-version-l05882)
 

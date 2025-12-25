@@ -25,7 +25,7 @@
   },
   "keywords": [
     "angular",
-    "app-version",
+    "ngx-app-version",
     "ngx"
   ],
   "engines": {
