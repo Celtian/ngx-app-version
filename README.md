@@ -14,7 +14,7 @@
 
 > Angular directive for writing version into DOM
 
-> ✓ _Angular 21 compatible_
+> ✓ _Angular 22 compatible_
 
 Here's the [demo](http://celtian.github.io/ngx-app-version/) or [stackblitz live preview](https://stackblitz.com/edit/ngx-app-version) or [codesandbox live preview](https://codesandbox.io/s/ngx-app-version-l05882)
 
@@ -98,7 +98,8 @@ export class AppComponent {}
 
 | Angular | ngx-app-version | Install                      |
 | ------- | --------------- | ---------------------------- |
-| >= 19   | 2.x             | `yarn add ngx-app-version`   |
+| >= 22   | 3.x             | `yarn add ngx-app-version`   |
+| >= 19   | 2.x             | `yarn add ngx-app-version@2` |
 | >= 14   | 1.x             | `yarn add ngx-app-version@1` |
 | >= 12   | 0.x             | `yarn add ngx-app-version@0` |
 
@@ -116,7 +117,7 @@ _None_
 
 ## 🪪 License
 
-Copyright &copy; 2023 - 2025 [Dominik Hladik](https://github.com/Celtian)
+Copyright &copy; 2023 - 2026 [Dominik Hladik](https://github.com/Celtian)
 
 All contents are licensed under the [MIT license].
 

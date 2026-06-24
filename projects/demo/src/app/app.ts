@@ -1,4 +1,4 @@
-import { Component, computed, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
 import { NgxAppVersionDirective } from 'ngx-app-version';
 import { VERSION } from '../environments/version';
 
@@ -9,6 +9,7 @@ type State = 'DIRECTIVE' | 'HOST_DIRECTIVE';
   imports: [NgxAppVersionDirective],
   templateUrl: './app.html',
   styleUrl: './app.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   hostDirectives: [NgxAppVersionDirective]
 })
 export class App {
