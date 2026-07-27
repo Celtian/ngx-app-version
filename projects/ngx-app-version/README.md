@@ -25,10 +25,10 @@ Here's the [demo](http://celtian.github.io/ngx-app-version/) or [stackblitz live
 
 ## 🛠️ Install
 
-1. Use yarn (or npm) to install the package
+1. Use Bun to install the package
 
 ```terminal
-yarn add ngx-app-version
+bun add ngx-app-version
 ```
 
 2. Add `provideAppVersion` into your config
@@ -96,12 +96,12 @@ export class AppComponent {}
 
 ## 🔧 Compatibility
 
-| Angular | ngx-app-version | Install                      |
-| ------- | --------------- | ---------------------------- |
-| >= 22   | 3.x             | `yarn add ngx-app-version`   |
-| >= 19   | 2.x             | `yarn add ngx-app-version@2` |
-| >= 14   | 1.x             | `yarn add ngx-app-version@1` |
-| >= 12   | 0.x             | `yarn add ngx-app-version@0` |
+| Angular | ngx-app-version | Install                     |
+| ------- | --------------- | --------------------------- |
+| >= 22   | 3.x             | `bun add ngx-app-version`   |
+| >= 19   | 2.x             | `bun add ngx-app-version@2` |
+| >= 14   | 1.x             | `bun add ngx-app-version@1` |
+| >= 12   | 0.x             | `bun add ngx-app-version@0` |
 
 ## ⚙️ Options
 
